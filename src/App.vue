@@ -31,7 +31,9 @@ export default {
       axios
         .get(API.URL_CRYPTO_DATA)
         .then(response => {
-          if (response.status === 200) this.data = response.data;
+          if (response.status === 200) {
+            this.data = response.data.filter(value => value.is_active);
+          }
         })
         .catch(error => {
           console.log(error);
